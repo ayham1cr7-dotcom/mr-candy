@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>لوحة إدارة مستر كاندي</title>
+<link rel="icon" href="assets/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="adm">
+<section id="login" class="loginbox">
+  <img class="logo big" src="assets/logo.png" alt="مستر كاندي">
+  <h1>دخول الإدارة</h1>
+  <form id="lf">
+    <label>البريد الإلكتروني<input type="email" name="e" required autocomplete="username" dir="ltr"></label>
+    <label>كلمة المرور<input type="password" name="p" required autocomplete="current-password" dir="ltr"></label>
+    <p id="lerr" class="err" role="alert"></p>
+    <button class="wide">تسجيل الدخول</button>
+  </form>
+  <p><a href="index.html">العودة للمتجر</a></p>
+</section>
+
+<div id="app" hidden>
+  <header class="top"><div class="wrap bar">
+    <a class="brand" href="index.html"><img class="logo" src="assets/logo.png" alt=""><b>لوحة الإدارة</b></a>
+    <span id="who" class="mut"></span>
+    <button class="ghost" id="out">تسجيل الخروج</button>
+  </div></header>
+  <main class="wrap">
+    <div id="sum" class="sum"></div>
+    <div class="tabs" id="tabs">
+      <button data-tab="orders" class="on">الطلبات</button><button data-tab="products">المنتجات</button><button data-tab="offers">العروض والبوكسات</button><button data-tab="brands">الشعارات</button><button data-tab="review">مراجعة التحويلات</button><button data-tab="payset">إعدادات الدفع والتحويل</button><button data-tab="media">الصور والواجهة</button><button data-tab="cats">الأقسام</button><button data-tab="settings">إعدادات الموقع</button>
+    </div>
+    <div id="view"></div>
+  </main>
+</div>
+<dialog id="dlg"></dialog>
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>

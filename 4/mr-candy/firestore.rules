@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // مستند الأدمن يُنشأ يدوياً من Firebase Console فقط
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    match /settings/{id}   { allow read: if true; allow write: if isAdmin(); }
+    match /categories/{id} { allow read: if true; allow write: if isAdmin(); }
+    match /media/{id}      { allow read: if true; allow write: if isAdmin(); }
+    match /offers/{id}     { allow read: if true; allow write: if isAdmin(); }
+    match /brands/{id}     { allow read: if true; allow write: if isAdmin(); }
+
+    match /products/{id} {
+      allow read: if true;
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin() || (
+        // الزائر يستطيع فقط رفع التقييم (نجمة 1-5 وزيادة العدد بواحد)
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['ratingSum', 'ratingCount']) &&
+        request.resource.data.ratingCount == resource.data.ratingCount + 1 &&
+        request.resource.data.ratingSum >= resource.data.ratingSum + 1 &&
+        request.resource.data.ratingSum <= resource.data.ratingSum + 5
+      );
+
+      match /reviews/{rid} {
+        allow read: if true;
+        allow create: if request.resource.data.keys().hasOnly(['stars', 'comment', 'createdAt']) &&
+          request.resource.data.stars is int &&
+          request.resource.data.stars >= 1 && request.resource.data.stars <= 5 &&
+          request.resource.data.comment is string && request.resource.data.comment.size() <= 300;
+        allow update, delete: if isAdmin();
+      }
+    }
+
+    // صور إثبات التحويل: لا يقرؤها ولا يكتبها أحد من المتصفح، الدالة الخادمية فقط
+    match /proofs/{id} { allow read, write: if false; }
+
+    match /orders/{code} {
+      // القراءة للأدمن فقط. الزبون يتتبع طلبه عبر دالة خادمية بعد التحقق (رقم الطلب + آخر 4 أرقام من الهاتف)
+      allow get, list: if isAdmin();
+      allow create: if request.resource.data.keys().hasOnly(
+          ['code','name','phone','addr','delivery','pay','note','items','subtotal','fee','total','status','pinned','inventoryDeducted','payment','createdAt']) &&
+        request.resource.data.status == 'processing' &&
+        request.resource.data.pinned == false &&
+        request.resource.data.inventoryDeducted == false &&
+        request.resource.data.payment.keys().hasOnly(['status']) &&
+        request.resource.data.payment.status in ['awaiting_transfer', 'cod'] &&
+        request.resource.data.items is list &&
+        request.resource.data.items.size() > 0 && request.resource.data.items.size() <= 50 &&
+        request.resource.data.name is string && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 100 &&
+        request.resource.data.phone is string && request.resource.data.phone.size() >= 7 && request.resource.data.phone.size() <= 20 &&
+        request.resource.data.addr is string && request.resource.data.addr.size() <= 300 &&
+        request.resource.data.note is string && request.resource.data.note.size() <= 500 &&
+        request.resource.data.delivery in ['in', 'qadisiya', 'out'] &&
+        request.resource.data.pay in ['cash', 'transfer'] &&
+        request.resource.data.code == code;
+      allow update, delete: if isAdmin();
+    }
+  }
+}
