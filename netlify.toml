@@ -1,4 +1,5 @@
 [build]
+  base = "2/mr-candy"
   command = "node scripts/gen-config.js" # يُبقي config.js الموجود إن لم تُضبط متغيرات
   publish = "public"
 
@@ -8,7 +9,7 @@
   external_node_modules = ["firebase-admin"]
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "24"
   # مفاتيح Firebase للويب ليست أسراراً (الحماية عبر القواعد)، نمنع فاحص الأسرار من إفشال البناء
   SECRETS_SCAN_OMIT_KEYS = "FIREBASE_API_KEY,FIREBASE_AUTH_DOMAIN,FIREBASE_PROJECT_ID,FIREBASE_MESSAGING_SENDER_ID,FIREBASE_APP_ID"
 
