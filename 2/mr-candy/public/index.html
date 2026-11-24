@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مستر كاندي | حلويات أوروبية مستوردة في تكريت</title>
+<meta name="description" content="مستر كاندي: المتجر الوحيد في تكريت المختص بالحلويات المستوردة الأوروبية وغيرها.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@600;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#home"><img class="logo" src="assets/logo.png" alt="شعار مستر كاندي"><b>مستر كاندي</b></a>
+    <nav id="nav" aria-label="القائمة الرئيسية">
+      <a href="#home">الرئيسية</a><a href="#offers">العروض</a><a href="#products">المنتجات</a><a href="#products" data-sort="rating">الأعلى تقييماً</a><a href="#about">عن المتجر</a><a href="#contact">تواصل معنا</a><a href="#" id="trackLink">تتبع طلبك</a>
+    </nav>
+    <button class="ghost" id="trackBtn">تتبع طلبك</button>
+    <button id="cartBtn" class="cartbtn" aria-label="فتح السلة">السلة <i id="cartCount">0</i></button>
+    <button class="ghost burger" id="burger" aria-label="القائمة" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<section id="home" class="hero rv">
+  <div class="wrap hero-in">
+    <div>
+      <h1 id="heroTitle">الحلويات الأوروبية المستوردة، الوحيدة في تكريت</h1>
+      <p id="heroSub">تاكيز، شوكولاتة، سناكس وعصائر مستوردة من أوروبا وغيرها، توصلك لباب البيت.</p>
+      <div class="chips">
+        <a href="#products" class="chip solid">تصفح المنتجات</a>
+        <a href="tel:07715151100" class="chip">07715151100</a>
+        <a href="https://instagram.com/Mr.candy_iq" target="_blank" rel="noopener" class="chip">Mr.candy_iq</a>
+      </div>
+    </div>
+    <img class="badge-logo logo" src="assets/logo.png" alt="">
+  </div>
+  <div class="scallop" aria-hidden="true"></div>
+</section>
+
+<section class="wrap rv" aria-label="الأقسام"><div id="cats" class="cats"></div></section>
+
+<section id="offers" class="wrap rv" hidden><h2 class="sech">العروض والبوكسات</h2><div id="offerGrid" class="grid"></div></section>
+
+<section id="products" class="wrap rv">
+  <div class="tools">
+    <input id="q" type="search" placeholder="ابحث عن منتج أو نكهة" aria-label="بحث">
+    <select id="avail" aria-label="التوفر"><option value="all">كل المنتجات</option><option value="in">المتوفر فقط</option></select>
+    <select id="sort" aria-label="الترتيب"><option value="new">الأحدث</option><option value="rating">الأعلى تقييماً</option><option value="low">الأقل سعراً</option></select>
+  </div>
+  <div id="grid" class="grid"><p class="empty">جاري التحميل...</p></div>
+</section>
+
+<section id="about" class="about rv">
+  <div class="wrap">
+    <h2>عن مستر كاندي</h2>
+    <p id="aboutText">المتجر الرسمي الوحيد في تكريت المختص بالحلويات المستوردة الأوروبية وغيرها. نختار منتجاتنا بعناية وتصلك بأفضل حالة.</p>
+    <p><b>العنوان:</b> صلاح الدين - تكريت - نهاية شارع زيونة</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="scallop flip" aria-hidden="true"></div>
+  <div class="wrap fgrid">
+    <div><img class="logo flogo" src="assets/logo.png" alt="مستر كاندي"><p>الحلويات المستوردة الأوروبية في تكريت.</p></div>
+    <div><h3>الأقسام</h3><div id="fcats"></div></div>
+    <div><h3>تواصل معنا</h3>
+      <p>صلاح الدين - تكريت - نهاية شارع زيونة</p>
+      <p><a href="tel:07715151100">07715151100</a></p>
+      <p><a href="https://instagram.com/Mr.candy_iq" target="_blank" rel="noopener">Mr.candy_iq</a></p>
+      <p><a href="admin.html">دخول الإدارة</a></p></div>
+  </div>
+</footer>
+
+<div id="scrim" hidden></div>
+<aside id="cart" aria-label="سلة الطلب" aria-hidden="true">
+  <div class="ch"><h2>سلة الطلب</h2><button class="ghost" id="closeCart" aria-label="إغلاق">✕</button></div>
+  <div id="cartItems"></div>
+  <form id="orderForm" hidden>
+    <h3>بيانات الطلب</h3>
+    <label>الاسم<input name="name" required maxlength="100" autocomplete="name"></label>
+    <label>رقم الهاتف<input name="phone" type="tel" inputmode="tel" required minlength="7" maxlength="20" autocomplete="tel"></label>
+    <label>العنوان<input name="addr" required maxlength="300" autocomplete="street-address"></label>
+    <label>طريقة التوصيل<select name="delivery" id="delivery"><option value="in">داخل تكريت: شركة دور تو دور</option><option value="out">خارج تكريت: شركة الوسيط</option></select></label>
+    <label>طريقة الدفع<select name="pay"><option value="cash">الدفع عند الاستلام</option><option value="transfer" id="payTransfer">تحويل إلكتروني (هاتف / QR / حساب)</option></select></label>
+    <label>ملاحظة مع الطلب (اختياري)<textarea name="note" rows="2" maxlength="500" placeholder="مثلاً: التوصيل الساعة 9، أو داخل بوكس"></textarea></label>
+    <div id="totals" class="totals"></div>
+    <button type="submit" id="sendOrder" class="wide">إرسال الطلب</button>
+  </form>
+</aside>
+<dialog id="dlg"></dialog>
+<script type="module" src="js/store.js"></script>
+</body>
+</html>

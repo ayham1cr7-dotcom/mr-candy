@@ -1,0 +1,33 @@
+body.adm{background:#fbf3f8}
+.loginbox{max-width:380px;margin:8vh auto;background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:26px;text-align:center}
+.loginbox form{text-align:right}.logo.big{width:96px;height:96px}
+.err{color:var(--bad);min-height:1.4em;margin:.5em 0}.mut{color:var(--mut)}
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:18px 0}
+.sum div{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:10px 14px}.sum b{display:block;font:800 1.7rem "Baloo Bhaijaan 2",sans-serif;color:var(--p)}
+.tabs,.subtabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.tabs button,.subtabs button{background:#fff;color:var(--pd);border:1.5px solid var(--line)}
+.tabs button.on,.subtabs button.on{background:var(--p);color:#fff;border-color:var(--p)}
+.oc{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+.oc.pin{border-color:var(--p);box-shadow:0 0 0 3px var(--pl)}
+.oc header{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.oc header small{margin-inline-start:auto;color:var(--mut)}
+.og{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.note{background:var(--pl);border-radius:10px;padding:6px 12px;margin:10px 0 0}
+.oc footer{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center;background:none;color:inherit;padding:0}
+.oc footer select{width:auto}
+.panel{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:14px;margin-bottom:14px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:620px}
+th,td{padding:8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle}
+.thumb{width:48px;height:48px;border-radius:10px;object-fit:cover;background:var(--pl)}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.hint{background:var(--pl);border-radius:12px;padding:10px 14px;color:var(--mut);font-size:.92rem}
+
+.plist{max-height:230px;overflow:auto;border:1.5px solid var(--line);border-radius:12px;padding:6px 10px}
+.plist .row{justify-content:space-between;border-bottom:1px solid var(--line);padding:4px 0}.plist input[type=number]{width:72px}
+.brandchk{display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0}.brandchk input{width:auto}.brandchk img{width:28px;height:28px;object-fit:contain}
+
+.proofimg{max-width:100%;max-height:420px;border-radius:12px;border:1.5px solid var(--line);display:block;margin:8px 0}
+.warn{background:#fff3cd;color:#7a5b00;border-radius:10px;padding:6px 12px;margin:8px 0}
+.hist{font-size:.88rem;color:var(--mut);margin:6px 0;padding:0 18px 0 0}
+
+.proofimg{cursor:zoom-in}
